@@ -11,9 +11,22 @@ button.addEventListener("click", generate);
 
 // add input fields -  start off with just words count
 
-function generate() {
+var testend = document.querySelector("#number-of-words");
 
-  outputArea.innerHTML = "<p>" + split.slice(0,2) + "</p>";
+if (testend < 0 ) {
+  testend = 0;
+}
+
+
+document.querySelector("#generate-button").formAction = "#";
+
+console.log(window);
+
+function generate(end) {
+
+  end = testend.value;
+
+  outputArea.innerHTML = "<p>" + split.slice(0, end) + "</p>";
   // note that now the base text is inserted in the div, this needs to be changed to the trimmed (or multiplied)
   // version of the base
 }
