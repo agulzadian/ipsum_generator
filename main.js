@@ -29,9 +29,7 @@ function setParLength(length) {// has a bug: only breaks after the first length 
 
 setParLength();
 
-
 //==================================================================//
-
 
 function generate(){
   numbWord = numbWordInput.value;//numb of words is selected
