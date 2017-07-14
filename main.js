@@ -12,20 +12,31 @@ var lorem = base; //base is trimmed
 
 var loremArray = lorem.split(" "); //text is turned into an array in order to be able to select x amount of words
 
-var numbWord = 300;
+//=============================== USER INPUT ======================//
 
-if (numbWord > loremArray.length){
+//----select number of words
+var numbWord = 10;
+
+if (numbWord > loremArray.length){ //adds words to the array if there aren't enought words in lorem
   loremArray = loremArray.concat(loremArray.slice(0,numbWord - loremArray.length));
 }
 
+//----select paragraph length
+var parLength = 6;
+
+loremArray.splice(parLength, 0, "\n");
 
 loremArray = loremArray.slice(0,numbWord);// amount of words is selected
+
+//==================================================================//
 
 var displayLorem = loremArray.join(" ");//text is made back into a string for displaying
 
 console.log(displayLorem);
 
-
+// be able to select number of words OR number of characters --> can be done in two ways:
+// 1: be able to select char OR words for the same input field
+// 2: make two input fields and have one of them inactive/greyed oud if the other one is focused
 
 
 
