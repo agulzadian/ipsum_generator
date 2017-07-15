@@ -20,27 +20,39 @@ var displayLorem;//the actual string that gets shown
 
 //=============================== USER INPUT ======================//
 
-//----select paragraph length
-
-function setParLength(length) {// has a bug: only breaks after the first length of words, need to make it breaks every length of words (so every 50 words), can do this using modulo
-  length = 50; // set to user input field
-  loremArray.splice(length, 0, "\n\n");//add a break
-}
-
-setParLength();
-
-//==================================================================//
 
 function generate(){
   numbWord = numbWordInput.value;//numb of words is selected
   loremArrayUsed = loremArray.slice(0,numbWord);// amount of words is actually processed
+
+  //----select paragraph length
+
+  for (i = 0; i < numbWord; i++){
+
+    if(i % 100 == 0 && i != 0){
+      loremArrayUsed.splice(i, 0, "\n\n");//add a break
+    }
+  }
+
   displayLorem = loremArrayUsed.join(" ");//text is made back into a string for displaying
+  displayLorem = displayLorem.replace(/\n\n /g,"\n\n");//delete space before punctuation
+  displayLorem = displayLorem.replace(/ \,/g,",");//delete space before punctuation
+  displayLorem = displayLorem.replace(/ \./g,".");
   console.log(displayLorem);
 }
 
 button.addEventListener("click", generate);
 
 
+
+
+// function setParLength(length) {// has a bug: only breaks after the first length of words, need to make it breaks every length of words (so every 50 words), can do this using modulo
+//   length = 50; // set to user input field
+//   loremArray.splice(length, 0, "\n\n");//add a break
+// }
+
 // be able to select number of words OR number of characters --> can be done in two ways:
 // 1: be able to select char OR words for the same input field
 // 2: make two input fields and have one of them inactive/greyed oud if the other one is focused
+
+// need to fix bug with the form action thing -> first time you hit enter it clears everything again and only then works
