@@ -27,9 +27,17 @@ var periodCounter = 0;
 //=============================== USER INPUT ======================//
 
 
+
 function generate(){
   numbWord = numbWordInput.value;//numb of words is selected
+
+  if (numbWord > loremArray.length){
+    loremArray = loremArray.concat(loremArray.slice(0,numbWord - loremArray.length));
+  }
+  
   loremArrayUsed = loremArray.slice(0,numbWord);// amount of words is actually processed
+
+
 
   //----select paragraph length
   parLength = parLengthInput.value;
@@ -77,5 +85,3 @@ button.addEventListener("click", generate);
 // 2: make two input fields and have one of them inactive/greyed oud if the other one is focused
 
 // need to fix bug with the form action thing -> first time you hit enter it clears everything again and only then works
-
-// need to fix upper case
