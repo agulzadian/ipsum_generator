@@ -21,7 +21,7 @@ var outputArea = document.querySelector("#output-area");
 var numbWord;
 var displayLorem;//the actual string that gets shown
 var parLength;
-var ranPeriod = Math.floor((Math.random()*10+5));
+var ranPeriod = 10;
 var periodCounter = 0;
 
 //=============================== USER INPUT ======================//
@@ -31,37 +31,32 @@ var periodCounter = 0;
 function generate(){
   numbWord = numbWordInput.value;//numb of words is selected
 
-  if (numbWord > loremArray.length){
+  if (numbWord > loremArray.length){//max word count limit fix
     loremArray = loremArray.concat(loremArray.slice(0,numbWord - loremArray.length));
   }
-  
   loremArrayUsed = loremArray.slice(0,numbWord);// amount of words is actually processed
-
-
 
   //----select paragraph length
   parLength = parLengthInput.value;
 
   for (i = 0; i < numbWord; i++){
+    periodCounter ++;
 
     if(i % parLength == 0 && i != 0 && i < loremArrayUsed.length){
       loremArrayUsed.splice(i, 0, "\.\n\n");//add a break
       loremArrayUsed[i+1] = loremArrayUsed[i+1].charAt(0).toUpperCase() + loremArrayUsed[i+1].slice(1, loremArrayUsed.length);
-      periodCounter ++;
-      console.log(periodCounter);
     }
 
-    // if(i % ranPeriod == 0 && i != 0 && i < loremArrayUsed.length) {
-    //   loremArrayUsed.splice(i, 0, "\.\"\,");
-    //   loremArrayUsed[i+1] = loremArrayUsed[i+1].charAt(0).toUpperCase() + loremArrayUsed[i+1].slice(1, loremArrayUsed.length);
-    //   ranPeriod = Math.floor((Math.random()*10+5));
-    //   console.log(ranPeriod);
-    //   }
+    if (periodCounter == ranPeriod){
+      loremArrayUsed.splice(i, 0, "\.");//add a period and one line below: add capital letter after period
+      loremArrayUsed[i+1] = loremArrayUsed[i+1].charAt(0).toUpperCase() + loremArrayUsed[i+1].slice(1, loremArrayUsed.length);
+      periodCounter = 0;
+      ranPeriod =  Math.floor(Math.random() * (15 - 5 + 1)) + 5;
+      console.log(ranPeriod);
+    }
 
 
   }
-
-
 
 
   loremArrayUsed.push(".");//adds the final period after the generated copy, not sure why specifically that period was missing tho
