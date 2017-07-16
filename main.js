@@ -23,10 +23,10 @@ var displayLorem;//the actual string that gets shown
 var parLength;
 var ranPeriod = 10;
 var periodCounter = 0;
+var ranComma = 6;
+var commaCounter = 0;
 
 //=============================== USER INPUT ======================//
-
-
 
 function generate(){
   numbWord = numbWordInput.value;//numb of words is selected
@@ -34,6 +34,7 @@ function generate(){
   if (numbWord > loremArray.length){//max word count limit fix
     loremArray = loremArray.concat(loremArray.slice(0,numbWord - loremArray.length));
   }
+
   loremArrayUsed = loremArray.slice(0,numbWord);// amount of words is actually processed
 
   //----select paragraph length
@@ -41,42 +42,42 @@ function generate(){
 
   for (i = 0; i < numbWord; i++){
     periodCounter ++;
+    commaCounter ++;
 
     if(i % parLength == 0 && i != 0 && i < loremArrayUsed.length){
       loremArrayUsed.splice(i, 0, "\.\n\n");//add a break
-      loremArrayUsed[i+1] = loremArrayUsed[i+1].charAt(0).toUpperCase() + loremArrayUsed[i+1].slice(1, loremArrayUsed.length);
+      loremArrayUsed[i+1] = loremArrayUsed[i+1].charAt(0).toUpperCase() + loremArrayUsed[i+1].slice(1, loremArrayUsed[i+1].length);
     }
 
     if (periodCounter == ranPeriod){
       loremArrayUsed.splice(i, 0, "\.");//add a period and one line below: add capital letter after period
-      loremArrayUsed[i+1] = loremArrayUsed[i+1].charAt(0).toUpperCase() + loremArrayUsed[i+1].slice(1, loremArrayUsed.length);
+      loremArrayUsed[i+1] = loremArrayUsed[i+1].charAt(0).toUpperCase() + loremArrayUsed[i+1].slice(1, loremArrayUsed[i+1].length);
       periodCounter = 0;
       ranPeriod =  Math.floor(Math.random() * (15 - 5 + 1)) + 5;
-      console.log(ranPeriod);
     }
 
-
+    if (commaCounter == ranComma){
+      loremArrayUsed.splice(i, 0, "\,");//add a comma and one line below: add capital letter after period
+      commaCounter = 0;
+      ranComma =  Math.floor(Math.random() * (15 - 5 + 1)) + 5;
+    }
   }
-
 
   loremArrayUsed.push(".");//adds the final period after the generated copy, not sure why specifically that period was missing tho
   displayLorem = loremArrayUsed.join(" ");//text is made back into a string for displaying
   displayLorem = displayLorem.replace(/\n\n /g,"\n\n");//delete space before punctuation
-  displayLorem = displayLorem.replace(/ \,/g,",");//delete space before punctuation
-  displayLorem = displayLorem.replace(/ \./g,".");
+  displayLorem = displayLorem.replace(/ \,/g,",");//delete space before comma
+  displayLorem = displayLorem.replace(/ \./g,".");//delete space before period
+  displayLorem = displayLorem.replace(/\,\./g,".");//delete comma if there's a period after a comma (sometimes happens because of the randomness of comma and period insertion)
+  displayLorem = displayLorem.replace(/\.\,/g,".");//same as above but in reverse order
   console.log(displayLorem);
-
-
 }
 
 button.addEventListener("click", generate);
-
-
-
-
 
 // be able to select number of words OR number of characters --> can be done in two ways:
 // 1: be able to select char OR words for the same input field
 // 2: make two input fields and have one of them inactive/greyed oud if the other one is focused
 
 // need to fix bug with the form action thing -> first time you hit enter it clears everything again and only then works
+// need to fix bug where something strange happens if you generate for a second time
