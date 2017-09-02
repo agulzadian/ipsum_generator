@@ -1,15 +1,16 @@
 var base = "Lorem ;ipsum dolor; sit amet, ; consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor.  Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec.";
 // var base = "Lorem ipsum dolor sit Amet";
 
-base = base.replace(/\,/g,"");// the /x/g means the effect is applied to all
-base = base.replace( /\./g ,"");// instances, not just the first encounter,
-base = base.replace(/\;/g,"");// the \ makes sure the effect of the dot, comma etc. are negated
-base = base.replace(/  /g," ");
-base = base.replace(/\"/g, "");
+// actually all below stuff could be replaced with the "is not a word" metacharacter (\W)
+// base = base.replace(/\,/g,"");// the /x/g means the effect is applied to all
+// base = base.replace( /\./g ,"");// instances, not just the first encounter,
+// base = base.replace(/\;/g,"");// the \ makes sure the effect of the dot, comma etc. are negated
+// base = base.replace(/\"/g, "");
 base = base.toLowerCase();
+base = base.replace(/[^\w\s]/g,"") //regex here selects everything that is not a word (\w) or a space (\s)
+base = base.replace(/  /g," ");
 
-var lorem = base; //base is trimmed
-var loremArray = lorem.split(" "); //text is turned into an array in order to be able to select x amount of words
+var loremArray = base.split(" "); //text is turned into an array in order to be able to select x amount of words and punctuation at random intervals
 var loremArrayUsed;//need a seperate array because the way I used slice() in the generate function alters the original lorenArray
 var button = document.querySelector("#generate-button");
 button.formAction = "#";// to cancel out the annoying reloading of the page on enter
@@ -31,14 +32,14 @@ var commaCounter = 0;
 function generate(){
   numbWord = numbWordInput.value;//numb of words is selected
 
-  if (numbWord > loremArray.length){//max word count limit fix
+  if (numbWord > loremArray.length){    //max word count limit fix
     loremArray = loremArray.concat(loremArray.slice(0,numbWord - loremArray.length));
   }
 
   loremArrayUsed = loremArray.slice(0,numbWord);// amount of words is actually processed
 
-  //----select paragraph length
-  parLength = parLengthInput.value;
+  parLength = parLengthInput.value;   //----select paragraph length
+
 
   for (i = 0; i < numbWord; i++){
     periodCounter ++;
@@ -70,7 +71,10 @@ function generate(){
   displayLorem = displayLorem.replace(/ \./g,".");//delete space before period
   displayLorem = displayLorem.replace(/\,\./g,".");//delete comma if there's a period after a comma (sometimes happens because of the randomness of comma and period insertion)
   displayLorem = displayLorem.replace(/\.\,/g,".");//same as above but in reverse order
-  console.log(displayLorem);
+
+  // console.log(JSON.stringify(displayLorem));// testing out the stringify command
+  outputArea.innerHTML = displayLorem;
+
 }
 
 button.addEventListener("click", generate);

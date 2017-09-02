@@ -1,3 +1,4 @@
-.active {
-  color: blue;
+#output-area {
+  margin: 75px 30px;
+  max-width: 750px;
 }
