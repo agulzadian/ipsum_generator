@@ -4,7 +4,6 @@ base = base.replace(/[^\w\s]/g,"") //regex here selects everything that is not a
 base = base.replace(/  /g," ");
 var loremArray = base.split(" "); //text is turned into an array in order to be able to select x amount of words and punctuation at random intervals
 var button = document.querySelector("#generate-button");
-button.formAction = "#";// to cancel out the annoying reloading of the page on enter
 var numbWordInput = document.querySelector("#number-of-words");
 numbWordInput.autofocus = true;
 numbWordInput.defaultValue = 500;
