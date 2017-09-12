@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> Ipsum generator</title>
-  <link rel="stylesheet" href="styles.css" >
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<body>
+    <title>Ipsum Generator</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/narrow-jumbotron.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
 
-<form action="">
-  Number of words: <input type="text" id="number-of-words">
-  Words per paragraph: <input type="text" id="words-per-paragraph">
-  <input type="submit" value="Generate" id="generate-button" onclick="return false;">
+    <div class="container">
+      <div class="header clearfix">
+        <form action="">
+          Number of words: <input type="text" id="number-of-words">
+          Words per paragraph: <input type="text" id="words-per-paragraph">
+          <input type="submit" value="Generate" id="generate-button" onclick="return false;">
+        </form>
+      </div>
 
-</form>
+      <div class="jumbotron">
+        <h1 class="display-4">Ipsum generator</h1>
+        <p><a class="btn btn-success" href="#" role="button">Click here to copy</a></p>
+        <div id="output-area">
+          <p>Your text will appear here</p>
+        </div>
+        <p><a class="btn btn-success" href="#" role="button">Click here to copy</a></p>
+      </div>
+    </div>
 
-
-  <div id="output-area">
-
-  </div>
-
-<script src="main.js">
-
-
-
-</script>
-
-
-</body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
