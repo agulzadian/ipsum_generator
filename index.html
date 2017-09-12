@@ -14,10 +14,19 @@
 
     <div class="container">
       <div class="header clearfix">
+
         <form action="">
-          Number of words: <input type="text" id="number-of-words">
-          Words per paragraph: <input type="text" id="words-per-paragraph">
-          <input type="submit" value="Generate" id="generate-button" onclick="return false;">
+          <div class="form-inline">
+            <div class="form-group">
+              <label>Number of words:</label>
+              <input type="text" id="number-of-words"class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Words per paragraph:</label>
+              <input type="text" id="words-per-paragraph" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary" id="generate-button" onclick="return false;">Generate</button>
+          </div>
         </form>
       </div>
 
