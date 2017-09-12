@@ -1,25 +1,35 @@
 #output-area {
-  margin: 75px 30px;
+  margin: 0px 30px;
   max-width: 750px;
+}
+
+#display-text {
+  text-align: left;
 }
 
 #generate-button {
   margin: 15px 0px;
 }
 
-.form-inline {
-  background: yellow;
+.display-4 {
+  margin: 25px;
 }
 
 .form-group {
   flex: 1;
-  /*margin: 15px;*/
   display: flex;
-  background: red;
 }
 
 .form-control {
   flex: 1;
   margin: 0px 5px;
   width: 10px;
+}
+
+.jumbotron {
+  padding: 20px;
+}
+
+.btn-success {
+  margin: 35px auto;
 }

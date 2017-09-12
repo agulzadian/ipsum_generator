@@ -86,7 +86,7 @@ function generate(){
   cleanUpDisplayLorem(/<\/br>\./g, "</br>");//prevent period from appearing before first word of new par
   cleanUpDisplayLorem(/<\/br>\,/g, "</br>");//prevent comma from appearing before first word of new par
 
-  outputArea.innerHTML = displayLorem;
+  outputArea.innerHTML = '<p id="display-text">' + displayLorem + '</p>';
 }
 
 button.addEventListener("click", generate);
@@ -94,6 +94,3 @@ button.addEventListener("click", generate);
 // be able to select number of words OR number of characters --> can be done in two ways:
 // 1: be able to select char OR words for the same input field
 // 2: make two input fields and have one of them inactive/greyed oud if the other one is focused
-
-// need to fix bug with the form action thing -> first time you hit enter it clears everything again and only then works
-// ^^ worked it out, solution was to add am onclick="return false;" in the html, in the submit input
