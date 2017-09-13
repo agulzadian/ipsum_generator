@@ -29,15 +29,13 @@
 
       <div class="jumbotron">
         <h1 class="display-4">Ipsum generator</h1>
-        <p><a class="btn btn-success" href="#" role="button">Click here to copy</a></p>
-        <div id="output-area">
-          <p>Your text will appear here</p>
-        </div>
-        <p><a class="btn btn-success" href="#" role="button">Click here to copy</a></p>
+        <p><a class="btn btn-success copy-button" data-clipboard-action="copy" data-clipboard-target="#output-area" href="#" role="button" onclick="copy()">Click here to copy text</a></p>
+        <textarea class="form-control" id="output-area">Your text will appear here</textarea>
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="clipboard.js-master/dist/clipboard.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
