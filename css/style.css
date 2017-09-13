@@ -5,6 +5,7 @@
 
 #display-text {
   text-align: left;
+  font-size: 14px;
 }
 
 #generate-button {
@@ -23,13 +24,41 @@
 .form-control {
   flex: 1;
   margin: 0px 5px;
-  width: 10px;
 }
 
 .jumbotron {
   padding: 20px;
+  background: rgba(10, 10, 10, 0.5);
 }
 
 .btn-success {
   margin: 35px auto;
+}
+
+#words-per-paragraph {
+  width: 100%;
+}
+
+#number-of-words {
+  width: 100%;
+}
+
+@media (max-width: 769px) {
+  #words-per-paragraph {
+    width: auto;
+  }
+
+  #number-of-words {
+    width: auto;
+  }
+ }
+
+ label {
+   margin: 0 5px;
+ }
+
+body {
+  background: #222 url('/stars.jpg') top center no-repeat;
+  background-size: cover;
+  color: white;
 }
