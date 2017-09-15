@@ -51,7 +51,6 @@ function reset(){
 
 function copy(){
   var clipboard = new Clipboard('.copy-button');
-  console.log('yep');
 }
 
 
