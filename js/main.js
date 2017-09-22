@@ -50,7 +50,7 @@ function reset(){
 }
 
 function copy(){
-  var clipboard = new Clipboard('.copy-button');
+  var clipboard = new Clipboard('#copy-button');
 }
 
 
@@ -97,11 +97,6 @@ function generate(){
   cleanUpDisplayLorem(/<\/br>\,/g, "</br>");//prevent comma from appearing before first word of new par
 
   outputArea.value = displayLorem;
-  outputArea.style.height = outputArea.scrollHeight + 'px';
-
-  console.log(outputArea.scrollHeight);
-
-  copyButton.style.display = "inline-block";
 }
 
 

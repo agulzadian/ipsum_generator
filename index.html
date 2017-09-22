@@ -7,32 +7,25 @@
 
     <title>Ipsum Generator</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/narrow-jumbotron.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <div class="main-box">
 
-    <div class="container">
-      <div class="header clearfix">
+      <h1>Ipsum generator</h1>
 
-        <form action="">
-          <div class="form-inline">
-              <label>Number of words:</label>
-              <input type="text" id="number-of-words"class="form-control">
-              <label>Words per paragraph:</label>
-              <input type="text" id="words-per-paragraph" class="form-control">
-              <button type="submit" class="btn btn-primary" id="generate-button" onclick="return false;">Generate</button>
-          </div>
-        </form>
+      <form action="">
+        <label>Number of words:</label>
+        <input type="text" id="number-of-words">
+        <label>Words per paragraph:</label>
+        <input type="text" id="words-per-paragraph">
+        <button type="submit" id="generate-button" onclick="return false;">Generate</button>
+      </form>
 
-      </div><!--header clearfix -->
+        <p><a id="copy-button" data-clipboard-action="copy" data-clipboard-target="#output-area" href="#" role="button" onclick="copy()">Click here to copy text</a></p>
+        <textarea  id="output-area">Your text will appear here</textarea>
 
-      <div class="jumbotron">
-        <h1 class="display-4">Ipsum generator</h1>
-        <p><a class="btn btn-success copy-button" data-clipboard-action="copy" data-clipboard-target="#output-area" href="#" role="button" onclick="copy()">Click here to copy text</a></p>
-        <textarea class="form-control" id="output-area">Your text will appear here</textarea>
       </div>
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="clipboard.js-master/dist/clipboard.min.js"></script>
